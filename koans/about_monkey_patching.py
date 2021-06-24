@@ -8,13 +8,15 @@
 from runner.koan import *
 
 class AboutMonkeyPatching(Koan):
+# Monkey patching is the dynamic replacement of classes or modules and their behavior at runtime.
+
     class Dog:
         def bark(self):
             return "WOOF"
 
     def test_as_defined_dogs_do_bark(self):
         fido = self.Dog()
-        self.assertEqual(__, fido.bark())
+        self.assertEqual('WOOF', fido.bark())
 
     # ------------------------------------------------------------------
 
@@ -24,8 +26,8 @@ class AboutMonkeyPatching(Koan):
         self.Dog.wag = wag
 
         fido = self.Dog()
-        self.assertEqual(__, fido.wag())
-        self.assertEqual(__, fido.bark())
+        self.assertEqual('HAPPY', fido.wag())
+        self.assertEqual('WOOF', fido.bark())
 
     # ------------------------------------------------------------------
 
@@ -35,7 +37,8 @@ class AboutMonkeyPatching(Koan):
         except Exception as ex:
             err_msg = ex.args[0]
 
-        self.assertRegex(err_msg, __)
+        # You cannot change built-in types to prevent accidental fatal changes to the built-in types
+        self.assertRegex(err_msg, "can't set attributes of built-in/extension type 'int'")
 
     # ------------------------------------------------------------------
 
