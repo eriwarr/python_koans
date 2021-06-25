@@ -8,7 +8,9 @@ import random
 class DiceSet:
     def __init__(self):
         self._values = None
+        #returns a number between 3 and 9 (both included)
 
+    # Python, property() is a built-in function that creates and returns a property object.
     @property
     def values(self):
         return self._values
@@ -16,6 +18,9 @@ class DiceSet:
     def roll(self, n):
         # Needs implementing!
         # Tip: random.randint(min, max) can be used to generate random numbers
+        self._values =[]
+        for i in range(n):
+            self._values.append(random.randint(1,6))
         pass
 
 class AboutDiceProject(Koan):
